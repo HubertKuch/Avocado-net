@@ -1,10 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
 
 const routes = [
     {
         title: 'Installation',
-        goto: '/installation'
+        goto: '/installation',
     },
     {
         title: 'Documentation',
@@ -29,8 +28,8 @@ const routes = [
                         goto: '/documentation/response',
                     },
                     {
-                        title: 'Router',
-                        goto: '/documentation/router',
+                        title: 'Routing',
+                        goto: '/documentation/routing',
                     },
                     {
                         title: 'Middleware',
@@ -40,7 +39,7 @@ const routes = [
                         title: 'Reading JSON',
                         goto: '/documentation/reading-json',
                     }
-                ]
+                ],
             },
             {
                 title: 'ORM',
@@ -65,7 +64,7 @@ const routes = [
                         title: 'Repository',
                         goto: '/documentation/repository',
                     },
-                ]
+                ],
             }
         ]
     },
@@ -85,10 +84,10 @@ const routes = [
 
 function Route({ title, goto, subRoutes }) {
     return (
-        <div style={{ marginLeft: 30 }}>
+        <div key={title} style={{ marginLeft: 30 }} title={title.toLowerCase().replace(' ', '-')}>
             <a href={goto}>{title}</a>
             {
-                (subRoutes ?? []).map(route => <div><Route {...route} /></div>)
+                (subRoutes ?? []).map(route => <div key={route.title} ><Route {...route} /></div>)
             }
         </div>
     )
@@ -100,7 +99,7 @@ export default function Nav() {
             <nav className={"nav--hide"}>
                 {
                     routes.map((route) => {
-                        return<Route {...route} />
+                        return <Route key={route.title} {...route} />
                     })
                 }
                 <div className={"toggle-nav"} onClick={(event) => {

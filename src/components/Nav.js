@@ -1,9 +1,11 @@
 import React from "react";
+import {useNavigate} from "react-router";
 
 const routes = [
     {
         title: 'Installation',
-        goto: '/installation',
+        goto: '/documentation/installation',
+        articleId: 'installation_tutorial',
     },
     {
         title: 'Documentation',
@@ -12,32 +14,34 @@ const routes = [
                 title: 'Router',
                 subRoutes: [
                     {
-                        title: 'Getting started',
-                        goto: '/documentation/getting-started',
-                    },
-                    {
                         title: 'Example',
                         goto: '/documentation/example',
+                        articleId: 'example_of_router',
                     },
                     {
                         title: 'Request',
                         goto: '/documentation/request',
+                        articleId: 'router_request',
                     },
                     {
                         title: 'Response',
                         goto: '/documentation/response',
+                        articleId: 'router_response',
                     },
                     {
                         title: 'Routing',
                         goto: '/documentation/routing',
+                        articleId: 'routing',
                     },
                     {
                         title: 'Middleware',
                         goto: '/documentation/middleware',
+                        articleId: 'router_middleware',
                     },
                     {
                         title: 'Reading JSON',
                         goto: '/documentation/reading-json',
+                        articleId: 'reading_json_data',
                     }
                 ],
             },
@@ -47,22 +51,27 @@ const routes = [
                     {
                         title: 'Attributes',
                         goto: '/documentation/attributes',
+                        articleId: 'attributes',
                     },
                     {
                         title: 'Database',
                         goto: '/documentation/database',
+                        articleId: 'database_connection',
                     },
                     {
                         title: 'First model',
                         goto: '/documentation/first-model',
+                        articleId: 'first_model',
                     },
                     {
                         title: 'Fetch option',
                         goto: '/documentation/fetch-option',
+                        articleId: 'fetch_options',
                     },
                     {
                         title: 'Repository',
                         goto: '/documentation/repository',
+                        articleId: 'repository',
                     },
                 ],
             }
@@ -70,22 +79,27 @@ const routes = [
     },
     {
         title: 'About project',
-        goto: '/about-project',
+        goto: '/documentation/about-project',
+        articleId: 'about_project',
     },
     {
         title: 'Suggest',
-        goto: '/suggest',
+        goto: '/documentation/suggest',
+        articleId: 'suggest',
     },
     {
         title: 'Initializer',
-        goto: '/initializer',
+        goto: '/documentation/initializer',
+        articleId: 'initializer',
     }
 ];
 
-function Route({ title, goto, subRoutes }) {
+function Route({ title, goto, subRoutes, articleId }) {
+    const navigate = useNavigate();
+
     return (
         <div key={title} style={{ marginLeft: 30 }} title={title.toLowerCase().replace(' ', '-')}>
-            <a href={goto}>{title}</a>
+            <a onClick={() => navigate(goto, { state: { articleId } })}>{title}</a>
             {
                 (subRoutes ?? []).map(route => <div key={route.title} ><Route {...route} /></div>)
             }

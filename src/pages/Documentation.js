@@ -1,19 +1,22 @@
 import React, {useEffect, useState} from "react";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
-import { useParams } from "react-router";
+import { useParams, useLocation } from "react-router";
 import keyWords from "../keyWords";
+import articles from "../articles";
 
 export default function Documentation() {
     const { slug } = useParams();
+    const { state } = useLocation();
     const [path, setPath] = useState([]);
+    const [article, setArticle] = useState('');
+
     const colors = ['#D8AA33', '#45592B', '#92C58A'];
 
     useEffect(() => {
         function getPath(slug) {
             let lastPoint = document.querySelector(`[title="${slug}"]`);
-
-            lastPoint.style.color = 'red'
+            setArticle(articles.find(({ id }) => id === state?.articleId)?.content);
 
             let points = [];
             let pointsCount = 0;
@@ -71,7 +74,7 @@ export default function Documentation() {
             <Header>
                 <div className={"path"}>{path}</div>
             </Header>
-            <main className={"article"} />
+            <main className={"article"} dangerouslySetInnerHTML={{ __html: article }} />
             <Nav/>
         </>
     )

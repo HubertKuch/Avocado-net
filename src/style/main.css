@@ -23,7 +23,7 @@
     --global-font: 'Actor', sans-serif;
 
     /* SIZES */
-    --header-height: 200px;
+    --header-height: 120px;
 
     /* BREAKPOINTS */
     --min--tablet-breakpoint: 768px;
@@ -33,6 +33,7 @@
 }
 
 html, body, #root {
+    font-size: 16px;
     width: 100%;
     height: 100%;
     padding: 0;
@@ -51,12 +52,12 @@ header {
 }
 
 #logo {
-    height: 8rem;
+    height: 5rem;
 }
 
 #project-name {
     display: block;
-    font-size: 4rem;
+    font-size: 2em;
 }
 
 #project-name:first-letter {
@@ -73,16 +74,16 @@ main {
     left: 40%;
     top: 40%;
     transform: translate(-50%, -50%);
-    font-size: 50px;
+    font-size: 28px;
 }
 
 nav {
     position: fixed;
     top: 0;
-    width: 550px;
+    width: 250px;
     background: var(--navbar-color);
     height: 100%;
-    font-size: 58px;
+    font-size: 1.5rem;
     padding: 10px;
     z-index: 1000;
     transition: right 200ms;
@@ -99,7 +100,7 @@ nav {
 }
 
 .nav--hide {
-    right: -550px;
+    right: -250px;
 }
 
 .nav--show {
@@ -127,12 +128,10 @@ a:hover {
 }
 
 .toggle-nav {
-    font-size: 80px;
-
+    font-size: 3rem;
     position: absolute;
     top: 50%;
-    left: -22%;
-
+    left: -5rem;
     transform: rotate(90deg) translate(-50%, -50%);
 }
 
@@ -143,7 +142,7 @@ a:hover {
 
 .article {
     padding: 40px;
-    font-size: 3rem;
+    /*font-size: 3rem;*/
 }
 
 .code-snippet {
@@ -180,11 +179,7 @@ a:hover {
     }
 
     .path {
-        margin-left: 50px;
-    }
-
-    .toggle-nav {
-        font-size: 3.5rem;
+        margin: 5px 50px 0;
     }
 }
 

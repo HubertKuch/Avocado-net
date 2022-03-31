@@ -30,7 +30,6 @@ export default function Documentation() {
                 }
                 lastPoint = lastPoint.parentElement;
             }
-
             points = points.map(point => `${point.charAt(0).toUpperCase() + point.slice(1)}`.replace('-', ' '));
             points = points.map((point, index) =>
                 <>

@@ -2,6 +2,7 @@ const blue = '#5179DE';
 const green = '#92C58A';
 const yellow = '#D8AA33';
 const pink = '#DF62E1';
+const red = '#ff6158';
 
 const keyWords = [
     {
@@ -55,6 +56,22 @@ const keyWords = [
     {
         word: /listen/,
         color: blue
+    },
+    {
+        word: /composer/,
+        color: red,
+    },
+    {
+        word: /hubert\/avocado/,
+        color: green
+    },
+    {
+        word: /https:\/\/(.*).git$/,
+        color: green
+    },
+    {
+        word: /"(.*)":/,
+        color: red
     },
 ];
 

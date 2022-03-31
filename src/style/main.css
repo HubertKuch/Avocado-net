@@ -18,18 +18,13 @@
     --code-blue: #5179DE;
     --code-yellow: #D8AA33;
     --code-pink: #DF62E1;
+    --code-red: #ff6158;
 
     /* FONTS */
     --global-font: 'Actor', sans-serif;
 
     /* SIZES */
     --header-height: 120px;
-
-    /* BREAKPOINTS */
-    --min--tablet-breakpoint: 768px;
-    --min--bigger-tablet-breakpoint: 1024px;
-    --min--laptop-breakpoint: 1600px;
-    --min--desktop-breakpoint: 1600px;
 }
 
 html, body, #root {
@@ -52,7 +47,7 @@ header {
 }
 
 #logo {
-    height: 5rem;
+    height: 4rem;
 }
 
 #project-name {
@@ -74,7 +69,7 @@ main {
     left: 40%;
     top: 40%;
     transform: translate(-50%, -50%);
-    font-size: 28px;
+    font-size: 22px;
 }
 
 nav {
@@ -91,7 +86,7 @@ nav {
 
 .overflow {
     position: absolute;
-    height: 100%;
+    height: 100vh;
     width: 100%;
     top: 0;
     left: 0;
@@ -137,22 +132,74 @@ a:hover {
 
 .path {
     font-size: 2rem;
-    margin: 10px 0 0 10px;
+    margin: 0 0 0 10px;
 }
 
+p {
+    padding: 0;
+    margin: 0;
+}
+
+/* ARTICLES */
 .article {
+    height: fit-content;
     padding: 40px;
-    /*font-size: 3rem;*/
+    margin: 0 0 50px;
 }
 
 .code-snippet {
     background: rgba(0, 0, 0, .23);
     padding: 20px;
     border-radius: 10px;
+    margin: 20px 0 20px;
+    display: block;
+    width: fit-content;
+}
+
+.article-h1 {
+    font-size: 3rem;
+}
+
+.article-h2 {
+    font-size: 2.5rem;
+}
+
+.article-h3 {
+    font-size: 2rem;
+    margin: 10px 0 10px;
+}
+
+.article-h4 {
+    font-size: 1.5rem;
+    margin: 10px 0 10px;
+}
+
+.green {
+    color: var(--dark-green);
+}
+
+.blue {
+    color: var(--dark-blue);
+}
+
+.yellow {
+    color: var(--code-yellow);
+}
+
+.dark-yellow {
+    color: var(--dark-yellow);
+}
+
+.light-green {
+    color: var(--light-green);
+}
+
+.red {
+    color: var(--code-red);
 }
 
 /* TABLET */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 620px) {
     #logo {
         height: 4rem;
     }
@@ -179,12 +226,36 @@ a:hover {
     }
 
     .path {
-        margin: 5px 50px 0;
+        margin: 0 50px 0;
     }
 }
 
 /* BIGGER TABLET */
+@media screen and (min-width: 850px) {
+    .article-h1 {
+        font-size: 3.5rem;
+    }
+
+    .article-h2 {
+        font-size: 3rem;
+    }
+
+    .article-h3 {
+        font-size: 2.5rem;
+    }
+
+    .article-h4 {
+        font-size: 2rem;
+    }
+
+    .code-snippet {
+        font-size: 1rem;
+    }
+}
 
 /* LAPTOP */
+@media screen and (min-width: 1348px) {
+
+}
 
 /* DESKTOP */

@@ -155,23 +155,36 @@ a:hover {
 /* TABLET */
 @media screen and (min-width: 1024px) {
     #logo {
-        height: 5rem;
+        height: 4rem;
     }
 
     #project-name {
-        font-size: 4rem;
+        font-size: 2em;
     }
 
     #project-description {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     nav {
         font-size: 2rem;
+        width: 400px;
+    }
+
+    .nav--hide {
+        right: -400px;
+    }
+
+    .nav--show {
+        right: 0;
     }
 
     .path {
         margin-left: 50px;
+    }
+
+    .toggle-nav {
+        font-size: 3.5rem;
     }
 }
 

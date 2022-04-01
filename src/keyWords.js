@@ -1,5 +1,6 @@
 const blue = '#5179DE';
 const green = '#92C58A';
+const dark_green = '#597239';
 const yellow = '#D8AA33';
 const pink = '#DF62E1';
 const red = '#ff6158';
@@ -41,31 +42,31 @@ const keyWords = [{
         color: pink
     },
     {
-        word: /'(.*)'/,
+        word: /'(.*)'/gm,
         color: green
     },
     {
-        word: /\$req(.*?)/,
+        word: /\$req(.*?)/gm,
         color: yellow
     },
     {
-        word: /\$res(.*?)/,
+        word: /\$res(.*?)/gm,
         color: yellow
     },
     {
-        word: /AvocadoRepository(.*?)/,
+        word: /AvocadoRepository(.*?)/gm,
         color: yellow
     },
     {
-        word: /listen/,
+        word: /listen/gm,
         color: blue
     },
     {
-        word: /composer/,
+        word: /composer/gm,
         color: red,
     },
     {
-        word: /hubert\/avocado/,
+        word: /hubert\/avocado/gm,
         color: green
     },
     {
@@ -73,16 +74,20 @@ const keyWords = [{
         color: green
     },
     {
-        word: /"(.*)":/,
+        word: /"(.*)":/gm,
         color: red
     },
     {
-        word: /use /,
+        word: /"(.*)" /gm,
+        color: red
+    },
+    {
+        word: /use /gm,
         color: blue
     },
     {
-        word: /\/\/ (.*)/,
-        color: green
+        word: /(\/\/)(.+?)(?=[\n\r]|\*\))/gm,
+        color: '#747474'
     },
 ];
 

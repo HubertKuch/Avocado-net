@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
 
+@font-face {
+    font-family: 'Google Sans';
+    src: url("fonts/ProductSans-Light.ttf");
+}
+
 * {
     box-sizing: border-box;
 }
@@ -21,7 +26,8 @@
     --code-red: #ff6158;
 
     /* FONTS */
-    --global-font: 'Actor', sans-serif;
+    --header-font: 'Actor', sans-serif;
+    --global-font: 'Google Sans', sans-serif;
 
     /* SIZES */
     --header-height: 120px;
@@ -131,7 +137,7 @@ a:hover {
 }
 
 .path {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: 0 0 0 10px;
 }
 
@@ -143,36 +149,35 @@ p {
 /* ARTICLES */
 .article {
     height: fit-content;
-    padding: 40px;
-    margin: 0 0 50px;
+    padding: 40px calc(1rem + 3vw);
 }
 
 .code-snippet {
     background: rgba(0, 0, 0, .23);
     padding: 20px;
     border-radius: 10px;
-    margin: 20px 0 20px;
+    margin: 20px 30px;
     display: block;
     width: fit-content;
-    font-size: calc(1rem - .5vw);
+    font-size: min(max(1rem, calc(.5rem + 1vw)), 20px);
 }
 
 .article-h1 {
-    font-size: 3rem;
+    font-size: calc(2.5rem + 3vw);
 }
 
 .article-h2 {
-    font-size: 2.5rem;
+    font-size: calc(2rem + 1vw);
 }
 
 .article-h3 {
-    font-size: 2rem;
+    font-size: calc(2rem + .5vw);
     margin: 10px 0 10px;
 }
 
 .article-h4 {
-    font-size: 1.5rem;
-    margin: 10px 0 10px;
+    font-size: calc(1.2rem + .7vw);
+    margin: 10px 20px 10px;
 }
 
 .green {
@@ -239,34 +244,6 @@ p {
     .path {
         margin: 0 50px 0;
     }
-}
-
-/* BIGGER TABLET */
-@media screen and (min-width: 850px) {
-    .article-h1 {
-        font-size: 3.5rem;
-    }
-
-    .article-h2 {
-        font-size: 3rem;
-    }
-
-    .article-h3 {
-        font-size: 2.5rem;
-    }
-
-    .article-h4 {
-        font-size: 2rem;
-    }
-
-    .code-snippet {
-        font-size: 1rem;
-    }
-}
-
-/* LAPTOP */
-@media screen and (min-width: 1348px) {
-
 }
 
 /* DESKTOP */

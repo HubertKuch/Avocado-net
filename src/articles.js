@@ -1,4 +1,5 @@
-const articles = [{
+const articles = [
+    {
         id: "installation_tutorial",
         content: `
             <p class="article-h2 yellow">Installation</p>
@@ -52,6 +53,7 @@ AvocadoRouter::listen();</pre>
                 That short code listen to <span class="blue">GET</span> endpoint and respond <span class="blue">'hello'</span> with status 200. 
                 Important is use listen function on AvocadoRouter class after define all endpoints.
             </p>
+            <br>
             <p class="article-h4 yellow">POST</p>
             <pre class="code-snippet">
 use Avocado\\Router\\AvocadoRouter;

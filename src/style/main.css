@@ -154,6 +154,7 @@ p {
     margin: 20px 0 20px;
     display: block;
     width: fit-content;
+    font-size: calc(1rem - .5vw);
 }
 
 .article-h1 {
@@ -196,6 +197,16 @@ p {
 
 .red {
     color: var(--code-red);
+}
+
+::-webkit-scrollbar {
+    background-color: inherit;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #92C58A;
 }
 
 /* TABLET */

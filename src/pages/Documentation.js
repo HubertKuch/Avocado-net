@@ -10,8 +10,8 @@ export default function Documentation() {
     const { state } = useLocation();
     const [path, setPath] = useState([]);
     const [article, setArticle] = useState('');
-
-    const colors = ['#D8AA33', '#45592B', '#92C58A'];
+    
+    const colors = ['#92C58A', '#45592B', '#D8AA33'];
 
     useEffect(() => {
         function getPath(slug) {

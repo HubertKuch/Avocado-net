@@ -4,8 +4,7 @@ const yellow = '#D8AA33';
 const pink = '#DF62E1';
 const red = '#ff6158';
 
-const keyWords = [
-    {
+const keyWords = [{
         word: /GET/,
         color: blue,
     },
@@ -27,6 +26,10 @@ const keyWords = [
     },
     {
         word: /json/,
+        color: blue,
+    },
+    {
+        word: /write/,
         color: blue,
     },
     {
@@ -72,6 +75,14 @@ const keyWords = [
     {
         word: /"(.*)":/,
         color: red
+    },
+    {
+        word: /use /,
+        color: blue
+    },
+    {
+        word: /\/\/ (.*)/,
+        color: green
     },
 ];
 

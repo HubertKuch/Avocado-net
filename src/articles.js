@@ -1,5 +1,4 @@
-const articles = [
-    {
+const articles = [{
         id: "installation_tutorial",
         content: `
             <p class="article-h2 yellow">Installation</p>
@@ -33,6 +32,44 @@ const articles = [
                 Then project is ready to work.
             </p>
         `,
+    },
+    {
+        id: "example_of_router",
+        content: `
+            <p class="article-h2">Example app using Avocado router and HTTP methods:</p>
+            <p class="article-h4 yellow">GET</p>
+<pre class="code-snippet">
+use Avocado\\Router\\AvocadoRouter;
+use Avocado\\Router\\AvocadoRequest;
+use Avocado\\Router\\AvocadoResponse;
+
+AvocadoRouter::GET('/hello', [], function(AvocadoRequest $req, AvocadoResponse $res){
+    $res -> write('Hello from API') -> withStatus(200);
+});
+
+AvocadoRouter::listen();</pre>
+            <p class="article-h4">
+                That short code listen to <span class="blue">GET</span> endpoint and respond <span class="blue">'hello'</span> with status 200. 
+                Important is use listen function on AvocadoRouter class after define all endpoints.
+            </p>
+            <p class="article-h4 yellow">POST</p>
+            <pre class="code-snippet">
+use Avocado\\Router\\AvocadoRouter;
+use Avocado\\Router\\AvocadoRequest;
+use Avocado\\Router\\AvocadoResponse;
+
+// incoming URL: /hello/andrzej
+AvocadoRouter::POST('/hello/:name', [], function(AvocadoRequest $req, AvocadoResponse $res){
+    $req -> body['KEY']; // in body array at request is stored all incoming data
+    $name = $req->params['name']; // also in params is stored URL variables like /hello/:name, /hello/andrzej. In this situation name is andrzej
+    
+    $req->json(array(
+        "message" => "Hello, $name"
+    ))->withStatus(200); // response is "Hello, andrzej"
+});
+
+AvocadoRouter::listen();</pre>
+        `
     }
 ];
 

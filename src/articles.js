@@ -29,7 +29,7 @@ const articles = [
             </p>
             <p class="article-h4">                
                 And the last method is using 
-                <a style="float: none; text-decoration: underline" href="/documentation/initializer" class="red">Avocado Initializer</a>.
+                <a href="/documentation/initializer" class="red link">Avocado Initializer</a>.
                 Then project is ready to work.
             </p>
         `,
@@ -71,6 +71,59 @@ AvocadoRouter::POST('/hello/:name', [], function(AvocadoRequest $req, AvocadoRes
 });
 
 AvocadoRouter::listen();</pre>
+        `
+    },
+    {
+        id: "router_request",
+        content: `
+            <p class="article-h3">What is request?</p>
+            <p class="article-h4">
+                Request is it what incoming to our application, it is made by client and can contain some data for example:
+                host name, headers, client ip address or data. HTTP request always store method (like GET, POST, PUT, DELETE) and path (like /api/v1/users/).
+                To decode JSON post data check <a class="link red" href="/documentation/routing">Router methods</a>.
+            </p><br>
+            <p class="article-h3">Request has the following properties:</p>
+            <table class="table">
+                <tr class="table__header">
+                    <td class="table__column">Property</td>
+                    <td class="table__column">Description</td>
+                    <td class="table__column">Type</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">body</td>
+                    <td class="table__column">contain data from client (from form etc)</td>
+                    <td class="table__column">array</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">params</td>
+                    <td class="table__column">path params like /:name /john </td>
+                    <td class="table__column">array</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">query</td>
+                    <td class="table__column">has path variables for example /user?id=2</td>
+                    <td class="table__column">array</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">cookies</td>
+                    <td class="table__column">contain cookies from client</td>
+                    <td class="table__column">array</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">headers</td>
+                    <td class="table__column">HTTP headers like CORS, Content-Type</td>
+                    <td class="table__column">array</td>
+                </tr>
+            </table>
+            <br>
+            <p class="article-h4">Example</p>
+            <pre class="code-snippet">Router::POST('/api/v1/users/:id', [], function(AvocadoRequest $req, AvocadoResponse $res) {
+   $username = $req->body['username']; // username property from incoming post data
+   $id = $req->params['id']; // for: \`/api/v1/users/1\` is 1
+   $friendName = $req->query['friend']; // for \`/api/v1/users/1?friend=john\` is 'john'
+   $token = $req->cookies['token']; // \`token: 123.456.789\` is 123.456.789
+   $contentType = $req->headers['content-type']; // for \`Content-Type: application-json\` value is application-json  
+});</pre>  
         `
     }
 ];

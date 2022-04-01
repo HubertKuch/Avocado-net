@@ -25,6 +25,10 @@
     --code-pink: #DF62E1;
     --code-red: #ff6158;
 
+    --table-header-bg-600: #202832;
+    --table-row-bg-200: #2c3844;
+    --table-row-bg-400: #242e38;
+
     /* FONTS */
     --header-font: 'Actor', sans-serif;
     --global-font: 'Google Sans', sans-serif;
@@ -150,6 +154,8 @@ p {
 .article {
     height: fit-content;
     padding: 40px calc(1rem + 3vw);
+    letter-spacing: .5px;
+    line-height: 45px;
 }
 
 .code-snippet {
@@ -176,7 +182,7 @@ p {
 }
 
 .article-h4 {
-    font-size: calc(1.2rem + .7vw);
+    font-size: clamp(1.5rem, 0.96rem + 0.18vw, 1.125rem);
     margin: 10px 20px 10px;
 }
 
@@ -214,6 +220,32 @@ p {
     background: #92C58A;
 }
 
+.link {
+    float: none;
+    text-decoration: underline;
+}
+
+.table {
+    font-size: clamp(1.5rem, .80em + 0.5vw, 2.125rem);
+}
+
+.table__header {
+    background: var(--table-header-bg-600);
+}
+
+.table__row {
+    background: var(--table-row-bg-200);
+}
+
+.table__row:nth-child(odd) {
+    background: var(--table-row-bg-400);
+}
+
+.table__column {
+    width: fit-content;
+    padding: 2px 20px;
+}
+
 /* TABLET */
 @media screen and (min-width: 620px) {
     #logo {
@@ -246,4 +278,3 @@ p {
     }
 }
 
-/* DESKTOP */

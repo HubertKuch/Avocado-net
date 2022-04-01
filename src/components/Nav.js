@@ -14,11 +14,6 @@ const routes = [
                 title: 'Router',
                 subRoutes: [
                     {
-                        title: 'Example',
-                        goto: '/documentation/example',
-                        articleId: 'example_of_router',
-                    },
-                    {
                         title: 'Request',
                         goto: '/documentation/request',
                         articleId: 'router_request',
@@ -42,7 +37,12 @@ const routes = [
                         title: 'Reading JSON',
                         goto: '/documentation/reading-json',
                         articleId: 'reading_json_data',
-                    }
+                    },
+                    {
+                        title: 'Example',
+                        goto: '/documentation/example',
+                        articleId: 'example_of_router',
+                    },
                 ],
             },
             {

@@ -3,6 +3,10 @@ import {useNavigate} from "react-router";
 
 const routes = [
     {
+        title: 'Main',
+        goto: '/',
+    },
+    {
         title: 'Installation',
         goto: '/documentation/installation',
         articleId: 'installation_tutorial',

@@ -89,6 +89,10 @@ const keyWords = [{
         word: /(\/\/)(.+?)(?=[\n\r]|\*\))/gm,
         color: '#747474'
     },
+    {
+        word: /return/gm,
+        color: pink
+    }
 ];
 
 export default keyWords;

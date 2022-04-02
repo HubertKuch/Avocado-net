@@ -82,6 +82,20 @@ AvocadoRouter::listen();</pre>
                 host name, headers, client ip address or data. HTTP request always store method (like GET, POST, PUT, DELETE) and path (like /api/v1/users/).
                 To decode JSON post data check <a class="link red" href="/documentation/routing">Router methods</a>.
             </p><br>
+            <p class="article-h3">How store data from middleware and pass it into route?</p>
+            <p class="article-h4">In request you have special array named \`locals\`, in it, you can save your data and read it in route.</p>
+            <pre class="code-snippet">
+function middleware(AvocadoRequest $req) {
+    $req->locals['fullName'] = $req->body['username'].$req->body['lastname'];
+    return true;
+}
+
+AvocadoRouter::GET('/', ['middleware'], function(AvocadoRequest $req, AvocadoResponse $res) {
+    return $res->write($req->locals['fullName']);
+});
+</pre>
+            
+            <br>
             <p class="article-h3">Request has the following properties:</p>
             <table class="table">
                 <tr class="table__header">

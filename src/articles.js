@@ -249,7 +249,92 @@ Router::POST('/', [], function (AvocadoRequest $req, AvocadoResponse $res){
 });
 </pre>
         `
-    }
+    },
+    {
+        id: "router",
+        content: `
+            <p class="article-h2" id="what-it-is-router">
+                <a href="#what-it-is-router" class="hash--pin red">#</a>
+                What is it router?
+            </p>
+            <p class="article-h4">
+                Router it is container for all defined routes. All us controllers are stored in router which decide which controller run based on HTTP method (GET, POST...) 
+                and path (/, /api/v1/users).
+            </p>
+            <p class="article-h4">
+                If you want use AvocadoRouter on the end of all defined routes you must call static \`listen\` method on AvocadoRouter class. 
+            </p>
+            <br><br>
+            <p class="article-h2" id="router-methods">
+                <a href="#router-methods" class="hash--pin red">#</a>
+                Router methods
+            </p><br>
+            <table class="table">
+                <tr class="table__header">
+                    <td class="table__column">Method</td>
+                    <td class="table__column">Description</td>
+                    <td class="table__column">Return type</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">use(callable $setting)</td>
+                    <td class="table__column">Accept callback which be called before routes</td>
+                    <td class="table__column">void</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">useJSON()</td>
+                    <td class="table__column">Decode JSON post data and set it to request body</td>
+                    <td class="table__column">void</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">GET(string $endpoint, array $middleware, callable $callback)</td>
+                    <td class="table__column">Define GET route</td>
+                    <td class="table__column">void</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">POST(string $endpoint, array $middleware, callable $callback)</td>
+                    <td class="table__column">Define POST route</td>
+                    <td class="table__column">void</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">PATCH(string $endpoint, array $middleware, callable $callback)</td>
+                    <td class="table__column">Define PATCH route</td>
+                    <td class="table__column">void</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">DELETE(string $endpoint, array $middleware, callable $callback)</td>
+                    <td class="table__column">Define DELETE route</td>
+                    <td class="table__column">void</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">listen()</td>
+                    <td class="table__column">Listen on defined routes</td>
+                    <td class="table__column">void</td>
+                </tr>
+            </table>
+            <br>
+            <p class="article-h3" id="router-example">
+                <a href="#router-example" class="hash--pin red">#</a>
+                Router example    
+            </p>
+            <pre class="code-snippet">
+// check is token is send
+AvocadoRouter::use(function(AvocadoRequest $req, AvocadoResponse $res){
+    return isset($req->headers['Authorization']);
+});
+            
+// send information to client with status code 200 (ok)
+AvocadoRouter::GET('/api/v1/users', [], function(AvocadoRequest $req, AvocadoResponse $res){
+        $res 
+            -> json(array(
+                "message" => "Hello from API"
+            ))
+            -> withStatus(200);
+});
+
+AvocadoRouter::listen();
+</pre>
+        `,
+    },
 ];
 
 export default articles;

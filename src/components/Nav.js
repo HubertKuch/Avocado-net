@@ -15,7 +15,7 @@ const routes = [
         title: 'Documentation',
         subRoutes: [
             {
-                title: 'Router',
+                title: 'AvocadoRouter',
                 subRoutes: [
                     {
                         title: 'Request',
@@ -28,9 +28,9 @@ const routes = [
                         articleId: 'router_response',
                     },
                     {
-                        title: 'Routing',
-                        goto: '/documentation/routing',
-                        articleId: 'routing',
+                        title: 'Router',
+                        goto: '/documentation/router',
+                        articleId: 'router',
                     },
                     {
                         title: 'Middleware',

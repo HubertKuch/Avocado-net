@@ -92,6 +92,18 @@ const keyWords = [{
     {
         word: /return/gm,
         color: pink
+    },
+    {
+        word: /generateToken/gi,
+        color: blue
+    },
+    {
+        word: /time/,
+        color: blue
+    },
+    {
+        word: "setHeader",
+        color: blue
     }
 ];
 

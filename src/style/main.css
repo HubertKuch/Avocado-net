@@ -225,6 +225,10 @@ p {
     text-decoration: underline;
 }
 
+.hash--pin {
+    float: none;
+}
+
 .table {
     font-size: clamp(1.5rem, .80em + 0.5vw, 2.125rem);
 }

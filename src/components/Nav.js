@@ -50,12 +50,12 @@ const routes = [
                     {
                         title: 'Attributes',
                         goto: '/documentation/attributes',
-                        articleId: 'attributes',
+                        articleId: 'orm_attributes',
                     },
                     {
-                        title: 'Database',
-                        goto: '/documentation/database',
-                        articleId: 'database_connection',
+                        title: 'Settings',
+                        goto: '/documentation/settings',
+                        articleId: 'orm_settings',
                     },
                     {
                         title: 'First model',

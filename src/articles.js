@@ -425,9 +425,101 @@ Router::GET('/api/v1/user/', ['findUser'], function (AvocadoRequest $req, Avocad
         `
     },
     {
-        id: 'reading_json_data',
+        id: 'orm_attributes',
         content: `
-
+            <p class="article-h3" id="list-of-orm-attributes">
+                <a href="#list-of-orm-attributes" class="hash--pin red">#</a>
+                List of ORM attributes
+            </p>
+            <p class="article-h4">
+                In AvocadoORM we have a few attributes which you can specify database table, primary key or entity field.<br>
+                List of them you see below
+            </p>
+            <table class="table">
+                <tr class="table__header">
+                    <td class="table__column">Attribute</td>
+                    <td class="table__column">Description</td>
+                    <td class="table__column">Param</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">Table</td>
+                    <td class="table__column">Specify table name</td>
+                    <td class="table__column">Optional alternative name</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">Id</td>
+                    <td class="table__column">Specify primary key for entity</td>
+                    <td class="table__column">Alternative primary key name</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">Field</td>
+                    <td class="table__column">Specify entity field</td>
+                    <td class="table__column">Alternative field name</td>
+                </tr>
+            </table><br>
+            <p class="article-h3" id="table-attribute"><a href="#table-attribute" class="hash--pin red">#</a> Table</p>
+            <p class="article-h4">
+                This attribute specify table name for entity. Accept one string argument. If arguments will be empty table name is class name in
+                which attribute is set. You can specify one Table attribute for model.
+            </p>
+            <p class="article-h4">In this case model table name is \`User\`.</p>
+            <pre class="code-snippet">
+#[Table]
+class User {
+...
+}
+</pre>  
+<p class="article-h4">But when we specify like this, then table name is \`users\`.</p>
+            <pre class="code-snippet">
+#[Table('users')]
+class User {
+...
+}
+</pre><br>
+            <p class="article-h3" id="id-attribute"><a href="#id-attribute" class="hash--pin red">#</a> Id</p>
+            <p class="article-h4">
+                Id attribute specify primary key for entity. Like in table attribute if arguments is empty
+                primary key for model is class property name for which Id attribute is set. You can specify
+                only one primary key for one entity. Two or more Id attributes set for one entity throws \`AvocadoModelException\`.
+                Id attribute must be provided to entity in this version of Avocado.
+            </p>
+            <p class="article-h4">Example model without passing primary key name. In this case Id is \`id\`</p>
+            <pre class="code-snippet">
+#[Table('users')]
+class User {
+    #[Id]
+    private int $id;
+}
+</pre>
+            <p class="article-h4">But we can specify other name passing it to \`Id\` constructor. In this case primary key is \`otherNameForId\`</p>
+            <pre class="code-snippet">
+#[Table('users')]
+class User {
+    #[Id('otherNameForId')]
+    private int $id;
+}
+</pre>
+            <p class="article-h3" id="field-attribute"><a href="#field-attribute" class="hash--pin red">#</a> Field</p>
+            <p class="article-h4">
+                Last attribute is \`Field\`. It specifies fields for our entity. 
+                These fields are used to finding and saving entities in database.
+                If you do not specify any other name for field like the above attributes
+                name for field is property for which is set.
+            </p>
+            <p class="article-h4">In this case default field name is property name, that is \`username\`</p>
+            <p class="article-h4">If you want to use other name for entity field enough pass it into constructor</p>   
+            <pre class="code-snippet">
+#[Table('users')]
+class User {
+    #[Id]
+    private int #id;
+    #[Field]
+    private string $username;
+    #[Field('hashedPassword')]
+    private string $password;
+}</pre>
+                 
+<br><br>
         `
     }
 ];

@@ -38,11 +38,6 @@ const routes = [
                         articleId: 'router_middleware',
                     },
                     {
-                        title: 'Reading JSON',
-                        goto: '/documentation/reading-json',
-                        articleId: 'reading_json_data',
-                    },
-                    {
                         title: 'Example',
                         goto: '/documentation/example',
                         articleId: 'example_of_router',

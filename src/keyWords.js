@@ -104,6 +104,18 @@ const keyWords = [{
     {
         word: "setHeader",
         color: blue
+    },
+    {
+        word: /str_starts_with/,
+        color: blue
+    },
+    {
+        word: /str_replace/,
+        color: blue
+    },
+    {
+        word: /useJSON/,
+        color: blue
     }
 ];
 

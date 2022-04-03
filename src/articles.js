@@ -68,8 +68,11 @@ use Avocado\\Router\\AvocadoResponse;
 
 // incoming URL: /hello/andrzej
 AvocadoRouter::POST('/hello/:name', [], function(AvocadoRequest $req, AvocadoResponse $res){
-    $req -> body['KEY']; // in body array at request is stored all incoming data
-    $name = $req->params['name']; // also in params is stored URL variables like /hello/:name, /hello/andrzej. In this situation name is andrzej
+    // in body array at request is stored all incoming data
+    $req -> body['KEY']; 
+    // also in params is stored URL variables like /hello/:name, 
+    // /hello/andrzej. In this situation name is andrzej
+    $name = $req->params['name']; 
     
     $req->json(array(
         "message" => "Hello, $name"
@@ -335,6 +338,98 @@ AvocadoRouter::listen();
 </pre>
         `,
     },
+    {
+        id: "router_middleware",
+        content: `
+            <p class="article-h3" id="what-is-middleware">
+                <a href="#what-is-middleware" class="red hash--pin">#</a>
+                What is middleware?
+            </p>
+            <p class="article-h4">
+                Middleware is a function who will be called before router callback, if middleware returns true router callback will be call also when 
+                middleware returns false you can specify error message and callback was not called.
+            </p>
+            <p class="article-h3" id="two-types-of-middleware">
+                <a href="#two-types-of-middleware" class="red hash--pin">#</a>
+                Two types of middleware in Avocado    
+            </p>    
+            <p class="article-h4">
+                First is application level middleware. It is global for our application and common for 
+                all routes (GET, POST...). To define application level middleware you can use \`use\` function
+                on AvocadoRouter. It accepts AvocadoRequest and AvocadoResponse.
+            </p>
+            <pre class="code-snippet">
+AvocadoRouter::use(function(AvocadoRequest $req, AvocadoResponse $res){
+    $req->locals['HELLO'] = 'FROM MIDDLEWARE';
+    // if you want stop next routes 
+    // you can use AvocadoRouter::stopNext(); function
+});</pre>
+            <p class="article-h4">
+                Next type of middleware is route level middleware. It will be called before invoke callback. If return true (it doesn't have to be boolean type),
+                callback will be call, otherwise it not.
+            </p>
+            <p class="article-h4">
+                Request and response is common to middleware and callback. It means you can manipulate data in middleware,
+                and it will be the same in callback.
+            </p>
+            <p class="article-h4">
+            Middleware is passed as string to middleware array. 
+        </p>
+            <pre class="code-snippet">
+function middleware(AvocadoRequest $req, AvocadoRequest $res) {
+    $token = $res->headers['Authorization'] ?? null;
+    
+    // if token will be null
+    // callback will not be called
+    return $token;
+}
+
+Router::GET('/api/v1/users', ['middleware'], function (){
+    // callback
+});</pre>
+            <p class="article-h3" id="pass-data-from-middleware-to-callback">
+                <a href="#pass-data-from-middleware-to-callback" class="red hash--pin">#</a>
+                Pass data from middleware to callback
+            </p>
+            <p class="article-h4">
+        If you want pass data from middleware to callback you can save it into \`locals\` attribute from request. 
+        In middleware pass data to locals, and they will be accessible in callback request.
+    </p>
+        <pre class="code-snippet">
+function findUser(AvocadoRequest $req, AvocadoResponse $res) {
+    $token = $req->headers['Authorization'] ?? null;
+    
+    if ($token && str_starts_with('Bearer ', $token)) {
+        $token = str_replace('Bearer ', '', $token);
+        $req -> locals['formattedToken'] = $token;
+        return true;
+    }
+}
+
+Router::GET('/api/v1/user/', ['findUser'], function (AvocadoRequest $req, AvocadoResponse $res){
+    $res->status(200)->json(array(
+        "user" => $req->locals['user']
+    ));
+});</pre>
+        <p class="article-h3" id="how-decode-json-post-data">
+            <a href="#how-decode-json-post-data" class="hash--pin red">#</a>
+            How decode JSON post data
+        </p>
+        <p class="article-h4">
+            To decode incoming JSON data you can use \`useJSON\` function on top of application. Decoded data is store
+            in body array in request.
+        </p>
+        <code class="code-snippet">AvocadoRouter::useJSON()</code>
+        <p class="article-h4">Then your data will be in</p>
+        <code class="code-snippet">$req->body[];</code>
+        `
+    },
+    {
+        id: 'reading_json_data',
+        content: `
+
+        `
+    }
 ];
 
 export default articles;

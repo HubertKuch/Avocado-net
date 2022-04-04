@@ -521,6 +521,43 @@ class User {
                  
 <br><br>
         `
+    },
+    {
+        id: "orm_settings",
+        content: `
+            <p class="article-h3" id="avocado-orm-settings-class">
+                <a href="#avocado-orm-settings-class" class="hash--pin red">#</a>
+                AvocadoORMSettings class
+            </p>
+            <p class="article-h4">
+                All of settings available in AvocadoORM is stored in AvocadoORMSettings class. It has few static methods
+                which you can use to change default settings.
+            </p>
+            <br>
+            <p class="article-h3" id="database-connection">
+                <a href="#database-connection" class="hash--pin red">#</a>
+                Database connection
+            </p>
+            <p class="article-h4">
+                To set database connection in AvocadoORM you must use \`useDatabase\` static function on AvocadoORMSettings class.
+                This function accepts three arguments: dsn, username and password. Arguments is the same as 
+                <a href="https://www.php.net/manual/en/pdo.construct.php" class="link red">PDO constructor</a>. Best way is call it on top level of our application.
+                Can throw \`AvocadoRepositoryException\` on failed connection.
+            </p>
+            <p class="article-h4">Example connection</p>
+            <code class="code-snippet">AvocadoORMSettings::useDatabase('mysql:host=HOST;dbname=DBNAME;', 'USER', 'PASSWORD');</code><br>
+            <p class="article-h3" id="change-default-fetch-option">
+                <a href="#change-default-fetch-option" class="hash--pin red">#</a>
+                Change fetch option
+            </p>
+            <p class="article-h4">
+                Default fetch option for avocado is \`fetch assoc\`. To change it for example for fetch class or both, on top level 
+                of application you must call \`useFetchOption\` static function on AvocadoORMSettings class. Syntax is \`useFetchOption(PDO::FETCH_OPTION_FROM_PDO)\`
+                . List of all ist available <a href="https://www.php.net/manual/en/pdostatement.fetch.php" class="hash--pin red">there</a>.
+            </p>
+            <p class="article-h4">Example change default fetch option</p>
+            <code class="code-snippet">AvocadoORMSettings::useFetchOption(PDO::FETCH_CLASS);</code>
+        `
     }
 ];
 

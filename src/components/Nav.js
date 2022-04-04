@@ -54,18 +54,13 @@ const routes = [
                     },
                     {
                         title: 'Settings',
-                        goto: '/documentation/settings',
+                        goto: '/documentation/orm_settings',
                         articleId: 'orm_settings',
                     },
                     {
                         title: 'First model',
                         goto: '/documentation/first-model',
                         articleId: 'first_model',
-                    },
-                    {
-                        title: 'Fetch option',
-                        goto: '/documentation/fetch-option',
-                        articleId: 'fetch_options',
                     },
                     {
                         title: 'Repository',

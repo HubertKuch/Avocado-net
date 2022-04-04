@@ -39,6 +39,9 @@ const keyWords = [
     { word: /int/gi,  color: red },
     { word: /string/gi,  color: red, },
     { word: /private/gi, color: pink, },
+    { word: /AvocadoORMSettings/, color: yellow },
+    { word: /useDatabase/, color: blue },
+    { word: /useFetchOption/, color: blue }
 ];
 
 export default keyWords;

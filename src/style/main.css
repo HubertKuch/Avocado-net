@@ -164,7 +164,8 @@ p {
     border-radius: 10px;
     margin: 20px 30px;
     display: block;
-    width: fit-content;
+    width: 90%;
+    overflow-x: scroll;
     font-size: min(max(1rem, calc(.5rem + 1vw)), 20px);
 }
 

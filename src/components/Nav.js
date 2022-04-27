@@ -88,14 +88,28 @@ const routes = [
     }
 ];
 
+function toggleNav() {
+    const overflow = document.querySelector('.overflow');
+    const nav = document.querySelector('nav');
+
+    overflow.classList.toggle('overflow--hidden');
+    overflow.classList.toggle('overflow--show');
+
+    nav.classList.toggle('nav--hidden');
+    nav.classList.toggle('nav--show');
+}
+
 function Route({ title, goto, subRoutes, articleId }) {
     const navigate = useNavigate();
 
     return (
         <div key={title} style={{ marginLeft: 30 }} title={title.toLowerCase().replace(' ', '-')}>
-            <a onClick={() => navigate(goto, { state: { articleId } })}>{title}</a>
+            <a onClick={() => {
+                navigate(goto, { state: { articleId }, replace: true });
+                toggleNav()
+            }}>{title}</a>
             {
-                (subRoutes ?? []).map(route => <div key={route.title} ><Route {...route} /></div>)
+                (subRoutes ?? []).map(route => <div key={route.title}><Route {...route} /></div>)
             }
         </div>
     )
@@ -107,19 +121,10 @@ export default function Nav() {
             <nav className={"nav--hide"}>
                 {
                     routes.map((route) => {
-                        return <Route key={route.title} {...route} />
+                        return <Route key={route.title} {...route} toggleNav={toggleNav} />
                     })
                 }
-                <div className={"toggle-nav"} onClick={(event) => {
-                    const overflow = document.querySelector('.overflow');
-                    const nav = event.target?.parentElement.parentElement;
-
-                    overflow.classList.toggle('overflow--hidden');
-                    overflow.classList.toggle('overflow--show');
-
-                    nav.classList.toggle('nav--hidden');
-                    nav.classList.toggle('nav--show');
-                }}>
+                <div className={"toggle-nav"} onClick={(event) => toggleNav()}>
                     <i className="fa-solid fa-grip" />
                 </div>
             </nav>

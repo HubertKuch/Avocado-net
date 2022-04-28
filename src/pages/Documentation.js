@@ -15,6 +15,8 @@ export default function Documentation() {
 
     useEffect(() => {
         function getPath(slug) {
+            document.querySelectorAll('[title]').forEach(point => point.firstElementChild.style.color = 'white')
+
             let lastPoint = document.querySelector(`[title="${slug}"]`);
             setArticle(articles.find(({ id }) => id === state?.articleId)?.content);
 
@@ -30,6 +32,7 @@ export default function Documentation() {
                 }
                 lastPoint = lastPoint.parentElement;
             }
+
             points = points.map(point => `${point.charAt(0).toUpperCase() + point.slice(1)}`.replace('-', ' '));
             points = points.map((point, index) =>
                 <>

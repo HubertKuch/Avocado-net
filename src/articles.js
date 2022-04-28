@@ -558,6 +558,10 @@ class User {
             <p class="article-h4">Example change default fetch option</p>
             <code class="code-snippet">AvocadoORMSettings::useFetchOption(PDO::FETCH_CLASS);</code>
         `
+    },
+    {
+        id: "",
+        content: ``
     }
 ];
 

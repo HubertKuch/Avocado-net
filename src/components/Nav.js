@@ -105,7 +105,7 @@ function Route({ title, goto, subRoutes, articleId }) {
     return (
         <div key={title} style={{ marginLeft: 30 }} title={title.toLowerCase().replace(' ', '-')}>
             <a onClick={() => {
-                navigate(goto, { state: { articleId }, replace: true });
+                navigate(goto, { state: { articleId }});
                 toggleNav()
             }}>{title}</a>
             {

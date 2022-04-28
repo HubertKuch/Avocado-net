@@ -14,7 +14,7 @@ const keyWords = [
     { word: /json/,  color: blue, },
     { word: /write/,  color: blue, },
     { word: /withStatus/, color: blue, },
-    { word: /function/, color: pink },
+    { word: /function/gi, color: pink },
     { word: /'(.*)'/gm, color: green },
     { word: /\$req(.*?)/gm,  color: yellow },
     { word: /\$res(.*?)/gm,  color: yellow },
@@ -39,9 +39,12 @@ const keyWords = [
     { word: /int/gi,  color: red },
     { word: /string/gi,  color: red, },
     { word: /private/gi, color: pink, },
+    { word: /public/gi, color: pink, },
     { word: /AvocadoORMSettings/, color: yellow },
     { word: /useDatabase/, color: blue },
-    { word: /useFetchOption/, color: blue }
+    { word: /useFetchOption/, color: blue },
+    { word: /new/, color: pink },
+    { word: /AvocadoRepository/, color: blue }
 ];
 
 export default keyWords;

@@ -560,8 +560,73 @@ class User {
         `
     },
     {
-        id: "",
-        content: ``
+        id: "first_model",
+        content: `
+            <p class="article-h3" id="building-models-with-avocado">
+                <a href="#building-models-with-avocado" class="hash--pin red">#</a> Building models with Avocado
+            </p>
+            <p class="article-h4">
+                ORM model is a programming representation of database entity. Using models to manage database from application is super easy.
+                You don't have to always write SQL queries to get or save data in database. You can simply use models with do to for you.
+            </p>
+            <p class="article-h4">
+                Model is only class marked by \`Table\` attribute.
+            </p>
+            <pre class="code-snippet">
+#[Table('user')]
+class User {
+    #[Id]
+    private int $id;
+    #[Field]
+    private string $username;
+    #[Field]
+    private string $hashedPassword;
+}
+
+$userRepository = new AvocadoRepository(User::class);</pre>
+            
+            <p class="article-h3" id="non-entity-properties-on-model">
+                <a href="#non-entity-properties-on-model" class="hash--pin red"># </a>
+                Non entity properties on model
+            </p>
+            <p class="article-h4">
+                In models you can store non entity properties used in app but not stored in database. Avocado save only properties with
+                \`Field\` annotation other properties are not saved.
+            </p>
+            <p class="article-h4">For example \`User\` model with non entity \`authToken\` property. It can be used only in app but not in database.</p>
+            <pre class="code-snippet">
+#[Table('user')]
+class User {
+    #[Id]
+    private int $id;
+    #[Field]
+    private string $username;
+    #[Field]
+    private string $hashedPassword;
+    
+    private string $authToken;
+    private string $refreshToken;
+    
+    public function __construct(string $username, string $password) {
+        $this->username = username;
+        $this->hashedPassword = hash('sha256', $password);
+    }
+    
+    public function setAuthToken(string $token): void {
+        $this->authToken = $token;
+    }
+}
+
+$userRepository = new AvocadoRepository(User::class);
+
+$user = new User("test", "Test1234");
+$user -> setAuthToken("huqw26...e912udw");
+
+$userRepository -> save($user); 
+            </pre>
+            
+            <p class="article-h4">In database will be store only username and password but authToken and refreshToken was not set.</p>
+        `
     }
 ];
 

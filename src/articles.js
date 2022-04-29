@@ -627,6 +627,127 @@ $userRepository -> save($user);
             
             <p class="article-h4">In database will be store only username and password but authToken and refreshToken was not set.</p>
         `
+    },
+    {
+        id: "repository",
+        content: `
+            <p class="article-h3" id="what-is-orm-repository"><a class="hash--pin red" href="#what-is-orm-repository"># </a> What is ORM repository?</p>
+            <p class="article-h4">Repository is object with methods to simple manage entities. For example, you can create new user without writing any query, only call \`method\`. Or you can find user's with age upper than 18 also without writing any query.</p>
+            <p class="article-h4">Single repository is only for one model.</p>
+            <p class="article-h3" id="methods"><a class="hash--pin red" href="#methods"># </a>Methods</p>
+            <table class="table">
+                <tr class="table__row">
+                    <td class="table__column">Name</td>                
+                    <td class="table__column">Description</td>                
+                    <td class="table__column">Syntax</td>                
+                    <td class="table__column">Response</td>                
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">findOne</td>
+                    <td class="table__column">Find first entity which fulfills optional criteria.</td>
+                    <td class="table__column">findOne(array $criteria = [])</td>
+                    <td class="table__column">Null or array</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">findOneById</td>
+                    <td class="table__column">Find entity by primary key.</td>
+                    <td class="table__column">findOneById($id)</td>
+                    <td class="table__column">Null or array</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">findOneToManyRelation</td>
+                    <td class="table__column">Finds by sub query criteria and optional normal criteria.</td>
+                    <td class="table__column">findOneToManyRelation(array|FindForeign $findCriteria, ?array $criteria = [])</td>
+                    <td class="table__column">array</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">findMany</td>
+                    <td class="table__column">Get all entities which fulfills criteria.</td>
+                    <td class="table__column">findMany(array $criteria = [])</td>
+                    <td class="table__column">array</td>
+                </tr>
+                
+                <tr class="table__row">
+                    <td class="table__column">updateOne</td>
+                    <td class="table__column">Updates first entity which fulfills criteria. If update criteria is empty throws AvocadoRepositoryException.</td>
+                    <td class="table__column">updateOne(array $updateCriteria, array $criteria = [])</td>
+                    <td class="table__column">null</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">updateOneById</td>
+                    <td class="table__column">Updates entity which specify primary key. If update criteria is empty throws AvocadoRepositoryException.</td>
+                    <td class="table__column">updateOneBydId(array $updateCriteria, $id)</td>
+                    <td class="table__column">null</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">updateMany</td>
+                    <td class="table__column">Updates all entities which fulfills criteria. If update criteria is empty throws AvocadoRepositoryException.</td>
+                    <td class="table__column">updateMany(array $updateCriteria, array $criteria = [])</td>
+                    <td class="table__column">null</td>
+                </tr>
+                
+                <tr class="table__row">
+                    <td class="table__column">deleteOneById</td>
+                    <td class="table__column">Deletes entity by primary key.</td>
+                    <td class="table__column">deleteOneById(int|string $id)</td>
+                    <td class="table__column">null</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">deleteMany</td>
+                    <td class="table__column">Deletes entities which fulfills criteria.</td>
+                    <td class="table__column">deleteMany(array $criteria)</td>
+                    <td class="table__column">null</td>
+                </tr>
+                
+                <tr class="table__row">
+                    <td class="table__column">save</td>
+                    <td class="table__column">Save one entity which repository model type. For example \`usersRepo\` will can save only \`User\` type objects.</td>
+                    <td class="table__column">save(object $entity)</td>
+                    <td class="table__column">null</td>
+                </tr>
+                <tr class="table__row">
+                    <td class="table__column">saveMany</td>
+                    <td class="table__column">Save many entities provided after coma.</td>
+                    <td class="table__column">saveMany(...$entities)</td>
+                    <td class="table__column">null</td>
+                </tr>
+                
+                <tr class="table__row">
+                    <td class="table__column">truncate</td>
+                    <td class="table__column">Truncates table data.</td>
+                    <td class="table__column">truncate()</td>
+                    <td class="table__column">void</td>
+                </tr>
+                
+                <tr class="table__row">
+                    <td class="table__column">renameTo</td>
+                    <td class="table__column">Renames table to specific name.</td>
+                    <td class="table__column">renameTo(string $to)</td>
+                    <td class="table__column">void</td>
+                </tr>
+            </table><br>
+            <p class="article-h3" id="criteria"><a href="#criteria" class="hash--pin red">#</a> Criteria</p>
+            <p class="article-h4">Some methods like findOne, findMany, updateMany etc. etc. has \`criteria\` argument. What it is and it works?</p>
+            <p class="article-h4">Criteria is easily array of key and value by which is finding or updating entities. For example:</p>
+            <pre class="code-snippet">
+$user = $usersRepo -> findMany(array(
+    "username" => "John",
+    "lastname" => "Doe"
+));
+</pre>
+            <p class="article-h4">This syntax means that find user with username equals "John" and last name "Doe".</p><br>
+            <p class="article-h3" id="update-criteria"><a href="#update-criteria" class="hash--pin red"># </a> Update criteria</p>
+            <p class="article-h4">Update criteria is similar to searching criteria but update criteria updates specific fields in entity.</p>
+            <pre class="code-snippet">
+$user = $usersRepo -> updateOneById(array(
+    "username" => $req->body['username']
+), $req->body['id']);
+</pre>    
+            <p class="article-h3" id="finding-entities"><a href="#finding-entities" class="hash--pin red"># </a>Finding</p>
+            <p class="article-h4">Finding methods search by criteria and return array of object or nested arrays it's up to ORM settings which you can change. How change it you can read <a class="link red" href="/documentation/orm_settings">there</a>.
+            
+            </p>
+        `
     }
 ];
 

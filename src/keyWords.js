@@ -44,7 +44,19 @@ const keyWords = [
     { word: /useDatabase/, color: blue },
     { word: /useFetchOption/, color: blue },
     { word: /new/, color: pink },
-    { word: /AvocadoRepository/, color: blue }
+    { word: /AvocadoRepository/, color: blue },
+    { word: /findOneById/gi, color: blue},
+    { word: /findOne/gi, color: blue},
+    { word: /findMany/gi, color: blue},
+    { word: /updateMany/gi, color: blue},
+    { word: /updateOneById/gi, color: blue},
+    { word: /updateMany/gi, color: blue},
+    { word: /deleteOneById/gi, color: blue},
+    { word: /deleteMany/gi, color: blue},
+    { word: /save/gi, color: blue},
+    { word: /saveMany/gi, color: blue},
+    { word: /truncate/gi, color: blue},
+    { word: /rename/gi, color: blue},
 ];
 
 export default keyWords;

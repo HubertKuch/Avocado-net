@@ -4,6 +4,7 @@ import Nav from "../components/Nav";
 import { useParams, useLocation } from "react-router";
 import keyWords from "../keyWords";
 import articles from "../articles";
+import Footer from "../components/Footer";
 
 export default function Documentation() {
     const { slug } = useParams();
@@ -77,6 +78,7 @@ export default function Documentation() {
                 <div className={"path"}>{path}</div>
             </Header>
             <main className={"article"} dangerouslySetInnerHTML={{ __html: article }} />
+            <Footer />
             <Nav/>
         </>
     )

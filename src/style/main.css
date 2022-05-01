@@ -312,6 +312,10 @@ p {
     border-radius: 10px;
 }
 
+.footer i {
+    color: var(--code-blue);
+}
+
 /* TABLET */
 @media screen and (min-width: 620px) {
     #logo {

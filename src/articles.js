@@ -512,7 +512,7 @@ class User {
 #[Table('users')]
 class User {
     #[Id]
-    private int #id;
+    private int $id;
     #[Field]
     private string $username;
     #[Field('hashedPassword')]

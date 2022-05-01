@@ -168,7 +168,7 @@ p {
     margin: 20px 30px;
     display: block;
     width: 90%;
-    overflow-x: scroll;
+    overflow-x: auto;
     font-size: min(max(1rem, calc(.5rem + 1vw)), 20px);
 }
 
@@ -250,7 +250,6 @@ p {
 }
 
 .table__column {
-    width: fit-content;
     padding: 2px 20px;
 }
 

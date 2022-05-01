@@ -124,11 +124,11 @@ export default function Nav() {
                         return <Route key={route.title} {...route} toggleNav={toggleNav} />
                     })
                 }
-                <div className={"toggle-nav"} onClick={(event) => toggleNav()}>
+                <div className={"toggle-nav"} onClick={() => toggleNav()}>
                     <i className="fa-solid fa-grip" />
                 </div>
             </nav>
-            <div className="overflow overflow--hidden" />
+            <div className="overflow overflow--hidden" onClick={() => toggleNav()} />
         </>
     );
 }

@@ -130,6 +130,7 @@ a {
     color: white;
     text-decoration: none;
     float: left;
+    cursor: pointer;
 }
 
 a:hover {
